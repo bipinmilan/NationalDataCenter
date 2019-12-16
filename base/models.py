@@ -13,6 +13,7 @@ class BaseModel(models.Model):
     description = RichTextUploadingField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
     related_file = models.FileField(upload_to='files/', blank=True)
+    is_private = models.BooleanField(default=False)
     is_published = models.BooleanField(default=True)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
@@ -20,3 +21,4 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True  # Set this model as Abstract
+

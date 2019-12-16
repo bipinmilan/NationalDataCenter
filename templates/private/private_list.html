@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Private data here</h2>
+{% if private_data %}
+  {% for pd in private_data %}
+   title = {{ pd.title }}
+<br />
+  {% endfor %}
+{% endif %}
+
+</body>
+</html>

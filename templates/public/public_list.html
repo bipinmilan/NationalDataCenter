@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Public data here</h2>
+{% if public_data %}
+  {% for pd in public_data %}
+   title = {{ pd.title }}
+<br />
+  description = {{ pd.description|striptags }}
+<br />
+<br />
+  {% endfor %}
+{% endif %}
+
+</body>
+</html>
