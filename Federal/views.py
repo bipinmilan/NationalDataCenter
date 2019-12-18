@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.views.generic import ListView
+from Federal.forms import ExecutiveCreate
 from Federal.models import Executive
 
 
@@ -14,12 +15,30 @@ def private_data(request):
         }
         return render(request, 'private/private_list.html', context)
     else:
-        return HttpResponse('You are neither super admin & also do not belongs to related group')
+        return HttpResponse('You have not access to see private data')
 
 
-def public_data(request):
-    public_data = Executive.objects.filter(is_private=False)
-    context = {
-        'public_data': public_data
-    }
-    return render(request, 'public/public_list.html', context)
+class public_data(ListView):
+    template_name = 'public/public_list.html'
+    queryset = Executive.objects.filter(is_private=False)
+    context_object_name = 'public_data'
+
+
+def upload(request):
+    upload = ExecutiveCreate()
+    if request.user.groups.filter(name="Data_Entry_Officer").exists():
+        if request.method == 'POST':
+            upload = ExecutiveCreate(request.POST, request.FILES)
+            if upload.is_valid():
+                form = upload.save(commit=False)
+                form.author = request.user
+                form.last_modified_by = request.user
+                form.save()
+                return redirect('/upload')
+            else:
+                return HttpResponse("not valid form data")
+
+        else:
+            return render(request, 'entry_officer_admin_dashboard/upload_form.html', {'upload_form': upload})
+    else:
+        return redirect('entry-login')

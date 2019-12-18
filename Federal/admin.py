@@ -7,7 +7,8 @@ admin.site.site_header = 'National Data Center'
 
 class ExecutiveAdmin(admin.ModelAdmin):
     list_display = (
-    'id', 'title', 'author', 'is_published', 'related_ministry', 'category', 'is_private', 'last_modified_by', 'modified_date')
+        'id', 'title', 'author', 'is_published', 'related_ministry', 'category', 'is_private',
+        'last_modified_by', 'timestamp', 'modified_date')
     list_display_links = ('id', 'title')
     list_editable = ('is_published',)
     search_fields = ('title', 'description', 'author__username', 'related_ministry__name')
@@ -29,7 +30,7 @@ class ExecutiveAdmin(admin.ModelAdmin):
 
 class LegislativeAdmin(admin.ModelAdmin):
     list_display = (
-    'id', 'title', 'author', 'is_published', 'related_house', 'category', 'last_modified_by', 'modified_date')
+        'id', 'title', 'author', 'is_published', 'related_house', 'category', 'last_modified_by', 'modified_date')
     list_display_links = ('id', 'title')
     list_editable = ('is_published',)
     search_fields = ('title', 'description', 'author__username', 'related_house__name')
@@ -44,7 +45,7 @@ class LegislativeAdmin(admin.ModelAdmin):
 
 class JudiciaryAdmin(admin.ModelAdmin):
     list_display = (
-    'id', 'title', 'author', 'is_published', 'related_court', 'category', 'last_modified_by', 'modified_date')
+        'id', 'title', 'author', 'is_published', 'related_court', 'category', 'last_modified_by', 'modified_date')
     list_display_links = ('id', 'title')
     list_editable = ('is_published',)
     search_fields = ('title', 'description', 'author__username', 'related_court__name')

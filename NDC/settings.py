@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'Federal',
     'offices',
     'categories',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+
 
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"

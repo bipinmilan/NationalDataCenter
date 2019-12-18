@@ -16,7 +16,7 @@ class BaseModel(models.Model):
     is_private = models.BooleanField(default=False)
     is_published = models.BooleanField(default=True)
     timestamp = models.DateTimeField(default=datetime.now, blank=True)
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=False)
     modified_date = models.DateTimeField(auto_now=True)
 
     class Meta:

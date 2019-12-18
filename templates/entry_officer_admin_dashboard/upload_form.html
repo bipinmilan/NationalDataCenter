@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    {% endif %}
+    <h1 class="display-3" style="background-color:#000000;color:#FFFF99;">Upload data</h1>
+
+    <form method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class='w-50 table table-light' style="border-radius:10px;background-color:#FFFF99;">
+
+            {{ upload_form.media }}
+            {{ upload_form.as_p }}
+
+
+        </table>
+        <button type="submit" class="btn btn-lg btn-warning">Submit</button>
+    </form>
+</center>
+</body>
+</html>
