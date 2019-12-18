@@ -29,6 +29,10 @@ def index(request):
     return render(request, 'pages/index.html')
 
 
+def table(request):
+    return render(request, 'entry_officer_admin_dashboard/executive_table_list.html')
+
+
 def upload(request):
     upload = ExecutiveCreate()
     if request.user.groups.filter(name="Data_Entry_Officer").exists():
