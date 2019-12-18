@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from Federal.forms import ExecutiveCreate
 from Federal.models import Executive
+from django.contrib import messages
 
 
 # @login_required
@@ -24,6 +25,10 @@ class public_data(ListView):
     context_object_name = 'public_data'
 
 
+def index(request):
+    return render(request, 'pages/index.html')
+
+
 def upload(request):
     upload = ExecutiveCreate()
     if request.user.groups.filter(name="Data_Entry_Officer").exists():
@@ -34,9 +39,11 @@ def upload(request):
                 form.author = request.user
                 form.last_modified_by = request.user
                 form.save()
+                messages.success(request, 'Data Entered Successfully')
                 return redirect('/upload')
             else:
-                return HttpResponse("not valid form data")
+                messages.error(request, 'Invalid Form Data!!')
+                return redirect('/upload')
 
         else:
             return render(request, 'entry_officer_admin_dashboard/upload_form.html', {'upload_form': upload})
