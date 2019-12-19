@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from Federal.forms import ExecutiveCreate
@@ -25,12 +25,27 @@ class public_data(ListView):
     context_object_name = 'public_data'
 
 
+@login_required(login_url='entry-login')
 def index(request):
     return render(request, 'pages/index.html')
 
 
-def table(request):
-    return render(request, 'entry_officer_admin_dashboard/executive_table_list.html')
+#class Table(ListView):
+    # template_name = 'federals/executive_table_list.html'
+    #queryset = Executive.objects.order_by('-timestamp').filter(is_published=True)
+    #context_object_name = 'executive_table'
+
+@login_required(login_url='entry-login')
+def retrieve_user_specific_data(request):
+        executive_table = Executive.objects.order_by('-timestamp').filter(is_published=True, author=request.user)
+        context = {
+            'executive_table': executive_table
+        }
+        return render(request, 'federals/executive_table_list.html', context)
+
+
+# else:
+# return HttpResponse('You have not access to see private data')
 
 
 def upload(request):
@@ -50,6 +65,6 @@ def upload(request):
                 return redirect('/upload')
 
         else:
-            return render(request, 'entry_officer_admin_dashboard/upload_form.html', {'upload_form': upload})
+            return render(request, 'federals/upload_form.html', {'upload_form': upload})
     else:
         return redirect('entry-login')

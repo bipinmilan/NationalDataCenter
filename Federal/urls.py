@@ -7,5 +7,5 @@ urlpatterns = [
     path('pb', public_data.as_view(), name='public_data'),
     path('upload', views.upload, name='upload'),
     path('entry-dashboard', views.index, name='entry-dashboard'),
-    path('executive-data', views.table, name='executive-data'),
+    path('executive-data', views.retrieve_user_specific_data, name='executive-data'),
 ]
