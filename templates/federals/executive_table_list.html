@@ -6,7 +6,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    {% include 'partials/_sidebar.html' %}
+
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -24,8 +24,9 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Federal Executive Data Table</h1>
-                <p class="mb-4">All the Data of Federal Executive government.</p>
-
+                <!--p class="mb-4">All the Data of Federal Executive government.</p-->
+                <a class="mb-4 btn btn-success" href="{% url 'entry-dashboard' %}">Go Back to Dashboard</a>
+                <a class="mb-4 btn btn-success" id="add_btn" href="{% url 'add-executive-data' %}">ADD NEW EXECUTIVE DATA</a>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -42,6 +43,7 @@
                                     <th style="width: 400px;">RELATED MINISTRY</th>
                                     <th style="width: 40px;">CATEGORY</th>
                                     <th style="width: 5px;">IS PRIVATE</th>
+                                     <th>ACTIONS</th>
 
                                 </tr>
                                 </thead>
@@ -55,6 +57,9 @@
                                     <td>{{et.related_ministry}}</td>
                                     <td>{{et.category}}</td>
                                     <td>{{et.is_private}}</td>
+                                    <td><a href="#"><i class="far fa-edit" id="edit-crc"></i></a>
+                                    <a href="/delete/{{ et.id }}"><i class="fas fa-times-circle" id="dlt-crc"></i></a>
+                                    </td>
 
                                 </tr>
                                 {% endfor %}

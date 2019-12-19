@@ -1,10 +1,13 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, request
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, DeleteView, UpdateView
 from Federal.forms import ExecutiveCreate
 from Federal.models import Executive
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 
 # @login_required
@@ -30,18 +33,28 @@ def index(request):
     return render(request, 'pages/index.html')
 
 
-#class Table(ListView):
-    # template_name = 'federals/executive_table_list.html'
-    #queryset = Executive.objects.order_by('-timestamp').filter(is_published=True)
-    #context_object_name = 'executive_table'
+# class Table(ListView):
+# template_name = 'federals/executive_table_list.html'
+# queryset = Executive.objects.order_by('-timestamp').filter(is_published=True)
+# context_object_name = 'executive_table'
 
-@login_required(login_url='entry-login')
-def retrieve_user_specific_data(request):
-        executive_table = Executive.objects.order_by('-timestamp').filter(author=request.user)
-        context = {
-            'executive_table': executive_table
-        }
-        return render(request, 'federals/executive_table_list.html', context)
+# @login_required(login_url='entry-login')
+'''def retrieve_user_specific_data(request):
+    executive_table = Executive.objects.order_by('-timestamp').filter(author=request.user)
+    context = {
+        'executive_table': executive_table
+    }
+    return render(request, 'federals/executive_table_list.html', context)
+'''
+
+
+class ExecutiveDataList(ListView):
+    model = Executive
+    template_name = 'federals/executive_table_list.html'
+    context_object_name = 'executive_table'
+
+    def get_queryset(self):
+        return self.model.objects.filter(author=self.request.user)
 
 
 def upload(request):
@@ -64,3 +77,29 @@ def upload(request):
             return render(request, 'federals/upload_form.html', {'upload_form': upload})
     else:
         return redirect('entry-login')
+
+
+'''def delete_executive_data(request, executive_id):
+    executive_id = int(executive_id)
+    executive_data = Executive.objects.get(pk=executive_id)
+    executive_data.delete()
+    return redirect('executive-data')'''
+
+'''class ExecutiveUpdate(UpdateView):
+    model = Executive
+    fields = '__all__'
+    success_url = reverse_lazy('executive-data')
+
+
+class ExecutiveDelete(DeleteView):
+    model = Executive
+    success_url = reverse_lazy('executive-data')'''
+
+'''def destroy(request, id):
+    executive = Executive.objects.get(id=id)
+    executive.delete()
+    return redirect("executive-data")'''
+
+
+class ExecutiveDelete(DeleteView):
+    model = Executive

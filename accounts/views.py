@@ -13,7 +13,6 @@ def data_entry_login(request):
 
         if user is not None and user.groups.filter(name='Data_Entry_Officer').exists():
             auth.login(request, user)
-            messages.success(request, 'You are now logged in')
             return redirect('entry-dashboard')
         else:
             messages.error(request, 'Invalid credentials')
@@ -26,5 +25,4 @@ def data_entry_login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request, 'You are now logged out')
         return redirect('entry-login')

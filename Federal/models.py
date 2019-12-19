@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+
 from base.models import BaseModel
 from offices.models import ExecutiveOffice, LegislativeOffice, JudiciaryOffice
 
@@ -13,6 +15,9 @@ class Executive(BaseModel):
 
     def __str__(self):
         return self.title
+
+    '''def get_absolute_url(self):
+        return reverse('executive_update', args=(self.pk,))'''
 
 
 class Legislative(BaseModel):
