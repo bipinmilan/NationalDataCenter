@@ -37,15 +37,11 @@ def index(request):
 
 @login_required(login_url='entry-login')
 def retrieve_user_specific_data(request):
-        executive_table = Executive.objects.order_by('-timestamp').filter(is_published=True, author=request.user)
+        executive_table = Executive.objects.order_by('-timestamp').filter(author=request.user)
         context = {
             'executive_table': executive_table
         }
         return render(request, 'federals/executive_table_list.html', context)
-
-
-# else:
-# return HttpResponse('You have not access to see private data')
 
 
 def upload(request):
@@ -59,10 +55,10 @@ def upload(request):
                 form.last_modified_by = request.user
                 form.save()
                 messages.success(request, 'Data Entered Successfully')
-                return redirect('/upload')
+                return redirect('add-executive-data')
             else:
                 messages.error(request, 'Invalid Form Data!!')
-                return redirect('/upload')
+                return redirect('add-executive-data')
 
         else:
             return render(request, 'federals/upload_form.html', {'upload_form': upload})

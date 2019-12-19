@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 
@@ -19,3 +20,11 @@ def data_entry_login(request):
             return redirect('entry-login')
     else:
         return render(request, 'accounts/data_entry_login.html')
+
+
+@login_required(login_url='entry-login')
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+        return redirect('entry-login')
