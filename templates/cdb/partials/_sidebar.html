@@ -38,13 +38,36 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item dropdown-toggle" href="cards.html" id="dropdownMenuButton"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Executive</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <!--a class="dropdown-item" href="#">Action</a-->
-                    <a class="collapse-item" href="{% url 'add-executive-data' %}">Add Executive Data</a>
-                    <a class="collapse-item" href="{% url 'executive-data' %}">All Executive Data</a>
+                <div>
+                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Executive</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!--a class="dropdown-item" href="#">Action</a-->
+                        <a class="collapse-item" href="{% url 'add-executive-data' %}">Add Executive Data</a>
+                        <a class="collapse-item" href="{% url 'executive-data' %}">All Executive Data</a>
+                    </div>
                 </div>
+
+                <div>
+                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Legislative</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!--a class="dropdown-item" href="#">Action</a-->
+                        <a class="collapse-item" href="{% url 'add-legislative-data' %}">Add Legislative Data</a>
+                        <a class="collapse-item" href="{% url 'legislative-data' %}">All Legislative Data</a>
+                    </div>
+                </div>
+
+                <div>
+                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Judiciary</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!--a class="dropdown-item" href="#">Action</a-->
+                        <a class="collapse-item" href="{% url 'add-judiciary-data' %}">Add Judiciary Data</a>
+                        <a class="collapse-item" href="{% url 'judiciary-data' %}">All Judiciary Data</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </li>

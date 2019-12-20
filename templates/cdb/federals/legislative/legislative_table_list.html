@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'cdb/base.html' %}
 {% load static %}
 {% block content %}
 <body id="page-top">
@@ -16,50 +16,55 @@
         <div id="content">
 
             <!-- Topbar -->
-            {% include 'partials/_topbar.html' %}
+            {% include 'cdb/partials/_topbar.html' %}
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Federal Executive Data Table</h1>
+                <h1 class="h3 mb-2 text-gray-800">Federal Legislative Data Table</h1>
                 <!--p class="mb-4">All the Data of Federal Executive government.</p-->
                 <a class="mb-4 btn btn-success" href="{% url 'entry-dashboard' %}">Go Back to Dashboard</a>
-                <a class="mb-4 btn btn-success" id="add_btn" href="{% url 'add-executive-data' %}">ADD NEW EXECUTIVE DATA</a>
+                <a class="mb-4 btn btn-success" id="add_btn" href="{% url 'add-legislative-data' %}">ADD NEW LEGISLATIVE
+                    DATA</a>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Legislative DataTable</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead  style="font-size: 13px;">
+                                <thead style="font-size: 13px;">
                                 <tr>
                                     <th style="width: 400px;">TITLE</th>
                                     <th style="width: 40px;">AUTHOR</th>
                                     <th style="width: 5px;">IS PUBLISHED</th>
-                                    <th style="width: 400px;">RELATED MINISTRY</th>
+                                    <th style="width: 400px;">HOUSES</th>
                                     <th style="width: 40px;">CATEGORY</th>
                                     <th style="width: 5px;">IS PRIVATE</th>
-                                     <th>ACTIONS</th>
+                                    <th>ACTIONS</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% if executive_table %}
-                                {% for et in executive_table %}
+                                {% if legislative_table %}
+                                {% for lg in legislative_table %}
                                 <tr>
-                                    <td>{{et.title}}</td>
-                                    <td>{{et.author }}</td>
-                                    <td>{{et.is_published}}</td>
-                                    <td>{{et.related_ministry}}</td>
-                                    <td>{{et.category}}</td>
-                                    <td>{{et.is_private}}</td>
-                                    <td><a href="#"><i class="far fa-edit" id="edit-crc"></i></a>
-                                    <a href="/delete/{{ et.id }}"><i class="fas fa-times-circle" id="dlt-crc"></i></a>
+                                    <td>{{lg.title}}</td>
+                                    <td>{{lg.author }}</td>
+                                    <td>{{lg.is_published}}</td>
+                                    <td>{{lg.related_house }}</td>
+                                    <td>{{lg.category}}</td>
+                                    <td>{{lg.is_private}}</td>
+                                    <td><a href="{% url 'legislative-update'  lg.id  %}"><i class="far fa-edit"
+                                                       id="edit-crc"></i></a>
+                                        <a href="{% url 'legislative-delete'  lg.id  %}"><i class="fas fa-times-circle"
+                                                       id="dlt-crc"></i></a>
+
                                     </td>
+
 
                                 </tr>
                                 {% endfor %}
@@ -67,6 +72,7 @@
 
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

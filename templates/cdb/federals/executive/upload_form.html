@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'cdb/base.html' %}
 {% load static %}
 {% block content %}
 <body id="page-top">
@@ -6,7 +6,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    {% include 'partials/_sidebar.html' %}
+    {% include 'cdb/partials/_sidebar.html' %}
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -16,7 +16,7 @@
         <div id="content">
 
             <!-- Topbar -->
-            {% include 'partials/_topbar.html' %}
+            {% include 'cdb/partials/_topbar.html' %}
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                 <!--all the fields here-->
-                                {% include 'partials/_alerts.html' %}
+                                {% include 'cdb/partials/_alerts.html' %}
                                 <form method='POST' enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <table class='w-50 table table-light'

@@ -18,7 +18,7 @@ def data_entry_login(request):
             messages.error(request, 'Invalid credentials')
             return redirect('entry-login')
     else:
-        return render(request, 'accounts/data_entry_login.html')
+        return render(request, 'cdb/accounts/data_entry_login.html')
 
 
 @login_required(login_url='entry-login')
