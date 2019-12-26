@@ -11,9 +11,9 @@ from django.urls import reverse_lazy
 
 
 # @login_required
-def private_data(request):
+def public_data(request):
     if request.user.is_superuser or request.user.groups.filter(name="Federal_Executive").exists():
-        private_data = Executive.objects.filter(is_private=True, is_published=True)
+        private_data = Executive.objects.filter(is_private=False, is_published=True)
         context = {
             'private_data': private_data
         }
@@ -22,10 +22,10 @@ def private_data(request):
         return HttpResponse('You have not access to see private data')
 
 
-class public_data(ListView):
+'''class public_data(ListView):
     template_name = 'public/public_list.html'
     queryset = Executive.objects.filter(is_private=False)
-    context_object_name = 'public_data'
+    context_object_name = 'public_data'''
 
 
 @login_required(login_url='entry-login')
@@ -71,7 +71,7 @@ class ExecutiveUpdateView(UpdateView):
     fields = ('title', 'description', 'category', 'related_file', 'is_private', 'is_published', 'related_ministry')
 
     def get_success_url(self):
-        return reverse_lazy('executive-update', kwargs={'pk': self.object.id})
+        return reverse_lazy('executive-data')
 
 
 class ExecutiveDelete(DeleteView):

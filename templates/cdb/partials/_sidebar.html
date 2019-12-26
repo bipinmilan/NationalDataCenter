@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'entry-dashboard' %}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+           <i class="fa fa-database"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Data Center</div>
     </a>
 
     <!-- Divider -->
@@ -24,68 +24,56 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        <h5 style="color:orange;"><b>FEDERAL</b></h5>
     </div>
 
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Executive Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
            aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Federal</span>
+            <span>EXECUTIVE</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <div>
-                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Executive</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!--a class="dropdown-item" href="#">Action</a-->
-                        <a class="collapse-item" href="{% url 'add-executive-data' %}">Add Executive Data</a>
-                        <a class="collapse-item" href="{% url 'executive-data' %}">All Executive Data</a>
-                    </div>
-                </div>
-
-                <div>
-                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Legislative</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!--a class="dropdown-item" href="#">Action</a-->
-                        <a class="collapse-item" href="{% url 'add-legislative-data' %}">Add Legislative Data</a>
-                        <a class="collapse-item" href="{% url 'legislative-data' %}">All Legislative Data</a>
-                    </div>
-                </div>
-
-                <div>
-                    <a class="collapse-item dropdown-toggle" href="#" id="dropdownMenuButton"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Judiciary</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!--a class="dropdown-item" href="#">Action</a-->
-                        <a class="collapse-item" href="{% url 'add-judiciary-data' %}">Add Judiciary Data</a>
-                        <a class="collapse-item" href="{% url 'judiciary-data' %}">All Judiciary Data</a>
-                    </div>
-                </div>
+                <!--a class="dropdown-item" href="#">Action</a-->
+                <a class="collapse-item" href="{% url 'add-executive-data' %}">Add Executive Data</a>
+                <a class="collapse-item" href="{% url 'executive-data' %}">All Executive Data</a>
 
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+    <!-- Nav Item - Legislative Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <i class="fa fa-home"></i>
+            <span>LEGISLATIVE</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+
+                <!--a class="dropdown-item" href="#">Action</a-->
+                <a class="collapse-item" href="{% url 'add-legislative-data' %}">Add Legislative Data</a>
+                <a class="collapse-item" href="{% url 'legislative-data' %}">All Legislative Data</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Judiciary Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJudiciary"
+           aria-expanded="true" aria-controls="collapseJudiciairy">
+            <i class="fa fa-balance-scale"></i>
+            <span>JUDICIARY</span>
+        </a>
+        <div id="collapseJudiciary" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item" href="{% url 'add-judiciary-data' %}">Add Judiciary Data</a>
+                <a class="collapse-item" href="{% url 'judiciary-data' %}">All Judiciary Data</a>
             </div>
         </div>
     </li>

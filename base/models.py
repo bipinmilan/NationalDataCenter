@@ -3,7 +3,6 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from datetime import datetime
 
-
 # Create your models here.
 from categories.models import Category
 
@@ -21,4 +20,3 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True  # Set this model as Abstract
-

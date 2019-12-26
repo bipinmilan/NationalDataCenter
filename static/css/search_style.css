@@ -1,0 +1,39 @@
+body {
+    font-family: Arial;
+}
+* {
+    box-sizing: border-box;
+}
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid black;
+    margin: 40px 0px 0px 155px;
+    width: 30%;
+    background: transparent;
+    border-radius: 6px;
+    outline: none;
+}
+form.example button {
+    width: 5%;
+    padding: 10px;
+    background: #bd0912;
+    color: white;
+    font-size: 17px;
+    border: 1px solid black;
+    margin: -5px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+form.example button:hover {
+    background: #0b7dda;
+}
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.center {
+    position: absolute;
+    text-align: left;
+}

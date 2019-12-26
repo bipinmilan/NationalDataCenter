@@ -29,23 +29,28 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'base',
-    'Federal',
-    'offices',
-    'categories',
     'accounts',
+    'softbase',
     'django.contrib.admin',
     'django.contrib.auth',
+    'base',
+    'Federal',
+    'provinces',
+    'offices',
+    'categories',
+    'search',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
-
+    'widget_tweaks',
+    'safedelete',
 
 ]
 CKEDITOR_UPLOAD_PATH = "uploads/"
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,3 +137,14 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'basnetbipin49@gmail.com'
+EMAIL_HOST_PASSWORD = 'jjaqsiksnixfkzru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Shadow Team <noreply@shadowgovt.com>'
+
+LOGIN_REDIRECT_URL = '/entry-login'
+LOGIN_URL = '/msg/'

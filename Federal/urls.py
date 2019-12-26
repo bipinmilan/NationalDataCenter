@@ -6,8 +6,8 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path('pd', views.private_data, name='private_data'),
-    path('pb', public_data.as_view(), name='public_data'),
+    path('pd', views.public_data, name='public_data'),
+    # path('pb', public_data.as_view(), name='public_data'),
     path('add-executive-data', views.upload, name='add-executive-data'),
     path('entry-dashboard', views.index, name='entry-dashboard'),
     path('executive-data', login_required(login_url='entry-login')(ExecutiveDataList.as_view()), name='executive-data'),
