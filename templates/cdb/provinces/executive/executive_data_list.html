@@ -26,7 +26,7 @@
                 <h1 class="h3 mb-2 text-gray-800">Federal Executive Data Table</h1>
                 <!--p class="mb-4">All the Data of Federal Executive government.</p-->
                 <a class="mb-4 btn btn-success" href="{% url 'entry-dashboard' %}">Go Back to Dashboard</a>
-                <a class="mb-4 btn btn-success" id="add_btn" href="{% url 'add-executive-data' %}">ADD NEW EXECUTIVE
+                <a class="mb-4 btn btn-success" id="add_btn" href="{% url 'pro-add-executive' %}">ADD NEW EXECUTIVE
                     DATA</a>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -61,7 +61,7 @@
                                     <td><a href="{% url 'executive-update'  et.id  %}"><i class="far fa-edit"
                                                                                           id="edit-crc"></i></a>
                                         <a href="{% url 'executive-delete'  et.id  %}"><i class="fas fa-times-circle"
-                                                                                               id="dlt-crc"></i></a>
+                                                                                          id="dlt-crc"></i></a>
 
                                     </td>
 

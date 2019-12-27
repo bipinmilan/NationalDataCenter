@@ -8,16 +8,16 @@ from provinces.forms import ProExecutiveForm
 from provinces.models import ProvinceExecutive
 
 
-class ExecutiveDataList(ListView):
+class ProExecutiveListView(ListView):
     model = ProvinceExecutive
-    template_name = 'cdb/federals/executive/executive_table_list.html'
+    template_name = 'cdb/provinces/executive/executive_data_list.html'
     context_object_name = 'executive_table'
 
     def get_queryset(self):
         return self.model.objects.filter(author=self.request.user)
 
 
-def upload(request):
+def pro_upload(request):
     upload = ProExecutiveForm()
     if request.user.groups.filter(name="Data_Entry_Officer").exists():
         if request.method == 'POST':
@@ -28,31 +28,31 @@ def upload(request):
                 form.last_modified_by = request.user
                 form.save()
                 messages.success(request, 'Data Entered Successfully')
-                return redirect('add-executive-data')
+                return redirect('pro-add-executive')
             else:
                 messages.error(request, 'Invalid Form Data!!')
-                return redirect('add-executive-data')
+                return redirect('pro-add-executive')
 
         else:
-            return render(request, 'cdb/federals/executive/upload_form.html', {'upload_form': upload})
+            return render(request, 'cdb/provinces/executive/add_executive_data.html', {'upload_pro': upload})
     else:
         return redirect('entry-login')
 
 
-class ExecutiveUpdateView(UpdateView):
+class ProExecutiveUpdateView(UpdateView):
     model = ProvinceExecutive
-    template_name = 'cdb/federals/executive/executive_update.html'
+    template_name = 'cdb/provinces/executive/executive_update.html'
     context_object_name = 'executive_table'
     fields = ('title', 'description', 'category', 'related_file', 'is_private', 'is_published', 'related_ministry')
 
     def get_success_url(self):
-        return reverse_lazy('executive-data')
+        return reverse_lazy('pro-executive-data')
 
 
-class ExecutiveDelete(DeleteView):
+class ProExecutiveDelete(DeleteView):
     model = ProvinceExecutive
-    template_name = 'cdb/partials/_delete.html'
+    template_name = 'cdb/partials/_pro-delete.html'
     context_object_name = 'executive_table'
 
     def get_success_url(self):
-        return reverse_lazy('executive-data')
+        return reverse_lazy('pro-executive-data')

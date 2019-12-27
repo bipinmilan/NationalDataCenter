@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'entry-dashboard' %}">
         <div class="sidebar-brand-icon rotate-n-15">
-           <i class="fa fa-database"></i>
+            <i class="fa fa-database"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Data Center</div>
     </a>
@@ -80,6 +80,33 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        <h5 style="color:orange;"><b>PROVINCIAL</b></h5>
+    </div>
+
+
+    <!-- Nav Item - Executive Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePro" aria-expanded="true"
+           aria-controls="collapsePro">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>EXECUTIVE</span>
+        </a>
+        <div id="collapsePro" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <!--a class="dropdown-item" href="#">Action</a-->
+                <a class="collapse-item" href="{% url 'pro-add-executive' %}">Add Executive Data</a>
+                <a class="collapse-item" href="{% url 'pro-executive-data' %}">All Executive Data</a>
+
+
+            </div>
+        </div>
+    </li>
+
+
 
     <!-- Heading -->
     <div class="sidebar-heading">
