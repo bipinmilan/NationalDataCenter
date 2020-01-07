@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>National Data Center Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home_style.css' %}"/>
+</head>
+<body>
+
+<br>
+<br>
+<br>
+<div id="middle">
+    <div class="imgcontainer">
+        <img src="{% static 'img/1288px-Emblem_of_Nepal.svg.png' %}" alt="N.D.C" class="avatar" height="150"
+             width="device-width"/>
+    </div>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" id="mySearch" onkeyup="myFunction()"
+               placeholder="Search...(Data Title/Content/Category/Related to Offices/Data Range )"
+               title="Search According to Category()" name="q">
+        <input type="submit" id="b" value="Search"/>
+    </form>
+</div>
+</body>
+
+</html>

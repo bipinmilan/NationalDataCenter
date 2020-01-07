@@ -1,8 +1,9 @@
 from django.urls import path
-
-from search.views import FederalListView
+from search import views
+from search.views import HomeView
 
 urlpatterns = [
-    # path('', HomeView.as_view(), name='home'),
-    path('', FederalListView.as_view(), name='executive')
+    path('', HomeView.as_view(), name='home'),
+    # path('data', FederalListView.as_view(), name='data')
+    path('search/', views.search, name='search')
 ]

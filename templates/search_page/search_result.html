@@ -1,47 +1,142 @@
 {% load static %}
 <html>
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static '/css/search_style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <title>Search</title>
+    <link rel="stylesheet" href="{% static 'css/cus/search2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/secondpage.css' %}"/>
 </head>
 <body>
-<h1>
-    <div class="center">
-        <img src="{% static '/img/gov_logo.jpg' %}" alt="logo" style="width: 140px; height: 120px">
-    </div>
-    <form class="example" action="#">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-</h1>
+<div class="container-fluid">
+    <img src="{% static 'img/1288px-Emblem_of_Nepal.svg.png' %}" alt="N.D.C" class="float-left" height="200"
+         width="device-width" style="width: 140px; height: 120px">
+</div>
+
+<form class="example" action="{% url 'search' %}" method="get">
+    <input type="text" id="mySearch" onkeyup="myFunction()"
+           placeholder="Search...(Data Title/Content/Category/Related to Offices/Data Range )"
+           title="Search According to Category()" name="q">
+    <input type="button" id="b" value="Search"/>
+</form>
+
+<hr>
+
 <div class="container">
-    <h1>Search results:</h1>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col bg-primary">
-                <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        {% for fex in executive %}
-                        <div class="item{% if forloop.first %} active{% endif %}">
-                            <div class="carousel-caption capt">
-                                <h1>{{fex.title}}</h1>
-                            </div>
-                        </div>
-                        {%endfor%}
-                    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header bg-default" align="center">
+                    <b>Federal EXECUTIVE</b>
                 </div>
+                {% if items %}
+                {% for it in items %}
+                <div class="card-body">
+                    <h4>{{ it.title }}.</h4>
 
+                    <p>{{it.description|slice:"60"}}</p>
 
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">{{it.related_ministry}}</a>
+                    <h6 style="float: right;">{{ it.timestamp }}</h6>
 
+                </div>
+                <hr>
+                {% endfor %}
+                {% endif %}
 
+                <!--div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Ministry of Science</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+
+                </div>
+               <hr>
+                <div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Ministry of Foreign Affairs</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+                </div-->
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header bg-default" align="center">
+                    <b>Federal LEGISLATIVE</b>
+                </div>
+                <div class="card-body">
+                    <h4>This is result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Upper House</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Lower House</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Upper House</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header bg-default" align="center">
+                    <b>Federal Judiciary</b>
+                </div>
+                <div class="card-body">
+                    <h4>This is result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h4>This is another result title.</h4>
+
+                    <p>Here is the description of this result which is short and contains 60 characters of the record
+                        related.</p>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
+                    <h6 style="float: right;">2020/01/07</h6>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
