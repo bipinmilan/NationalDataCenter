@@ -24,119 +24,73 @@
 
 <div class="container">
     <div class="row">
+        {% if fed_executive_items %}
         <div class="col-sm">
             <div class="card">
                 <div class="card-header bg-default" align="center">
                     <b>Federal EXECUTIVE</b>
                 </div>
-                {% if items %}
-                {% for it in items %}
+                {% for it in fed_executive_items %}
+                <div class="card-body">
+                    <h4>{{ it.title }}.</h4>
+
+                    <p>{{it.description|slice:"60"|striptags}}</p>
+
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">{{it.related_ministry}}</a>
+                    <h6>{{ it.timestamp }}</h6>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if fed_legislative_items %}
+        <div class="col-sm">
+
+            <div class="card">
+                <div class="card-header bg-default" align="center">
+                    <b>Federal LEGISLATIVE</b>
+                </div>
+
+                {% for it in fed_legislative_items %}
                 <div class="card-body">
                     <h4>{{ it.title }}.</h4>
 
                     <p>{{it.description|slice:"60"}}</p>
 
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">{{it.related_ministry}}</a>
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">{{it.related_house}}</a>
                     <h6 style="float: right;">{{ it.timestamp }}</h6>
-
                 </div>
-                <hr>
                 {% endfor %}
-                {% endif %}
-
-                <!--div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Ministry of Science</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-
-                </div>
-               <hr>
-                <div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Ministry of Foreign Affairs</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-                </div-->
             </div>
+
         </div>
+        {% endif %}
 
+        {% if fed_judiciary_items %}
         <div class="col-sm">
-            <div class="card">
-                <div class="card-header bg-default" align="center">
-                    <b>Federal LEGISLATIVE</b>
-                </div>
-                <div class="card-body">
-                    <h4>This is result title.</h4>
 
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
-
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Upper House</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-
-                </div>
-                <hr>
-                <div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Lower House</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-
-                </div>
-                <hr>
-                <div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Upper House</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm">
             <div class="card">
                 <div class="card-header bg-default" align="center">
                     <b>Federal Judiciary</b>
                 </div>
+                {% for it in fed_judiciary_items %}
                 <div class="card-body">
-                    <h4>This is result title.</h4>
+                    <h4>{{ it.title }}.</h4>
 
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
+                    <p>{{it.description|slice:"60"}}</p>
 
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-
+                    <a type="button" href="" class="btn btn-primary" style="float: left;">{{it.related_court}}</a>
+                    <h6 style="float: right;">{{ it.timestamp }}</h6>
                 </div>
-                <hr>
-                <div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-
-                </div>
-                <hr>
-                <div class="card-body">
-                    <h4>This is another result title.</h4>
-
-                    <p>Here is the description of this result which is short and contains 60 characters of the record
-                        related.</p>
-                    <a type="button" href="" class="btn btn-primary" style="float: left;">Supreme Court</a>
-                    <h6 style="float: right;">2020/01/07</h6>
-                </div>
+                {% endfor %}
             </div>
+
         </div>
+        {% endif %}
     </div>
+    <hr>
 </div>
 </body>
 </html>
